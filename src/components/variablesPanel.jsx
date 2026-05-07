@@ -6,7 +6,7 @@ export function VariablesPanel({ variables }) {
   return (
     <div style={containerStyle}>
       {scopes.length === 0 ? (
-        <p style={{ color: '#888' }}>Waiting for a debug session to start...</p>
+        <p style={{ color: '#8a6a43' }}>Waiting for a debug session to start...</p>
       ) : (
         scopes.map((scope) => <ScopeBlock key={scope} scope={scope} vars={variables[scope]} />)
       )}
@@ -31,18 +31,18 @@ function ScopeBlock({ scope, vars }) {
           userSelect: 'none',
         }}
       >
-        <span style={{ fontSize: '11px', color: '#6b7280' }}>{open ? '▼' : '▶'}</span>
+        <span style={{ fontSize: '11px', color: '#8a6a43' }}>{open ? '▼' : '▶'}</span>
         <span
           style={{
             fontSize: '12px',
-            color: '#94a3b8',
+            color: '#15803d',
             textTransform: 'uppercase',
             letterSpacing: '0.05em',
           }}
         >
           {scope}
         </span>
-        <span style={{ fontSize: '11px', color: '#4b5563' }}>({entries.length})</span>
+        <span style={{ fontSize: '11px', color: '#9a7b57' }}>({entries.length})</span>
       </div>
 
       {open && (
@@ -54,13 +54,13 @@ function ScopeBlock({ scope, vars }) {
                 display: 'flex',
                 gap: '12px',
                 padding: '4px 0',
-                borderBottom: '1px solid #1e293b',
+                borderBottom: '1px solid #f3dfc2',
                 fontFamily: 'monospace',
                 fontSize: '13px',
               }}
             >
-              <span style={{ color: '#7dd3fc', minWidth: '100px' }}>{key}</span>
-              <span style={{ color: '#4b5563', marginRight: '4px' }}>=</span>
+              <span style={{ color: '#15803d', minWidth: '100px' }}>{key}</span>
+              <span style={{ color: '#9a7b57', marginRight: '4px' }}>=</span>
               <span style={{ color: getValueColor(value) }}>{formatValue(value)}</span>
             </div>
           ))}
@@ -71,11 +71,11 @@ function ScopeBlock({ scope, vars }) {
 }
 
 function getValueColor(value) {
-  if (typeof value === 'string') return '#34d399';
-  if (typeof value === 'number') return '#fb923c';
-  if (typeof value === 'boolean') return '#f472b6';
-  if (value === null) return '#6b7280';
-  return '#e2e8f0';
+  if (typeof value === 'string') return '#15803d';
+  if (typeof value === 'number') return '#ea580c';
+  if (typeof value === 'boolean') return '#b45309';
+  if (value === null) return '#9a7b57';
+  return '#3f2f1e';
 }
 
 function formatValue(value) {
@@ -86,8 +86,9 @@ function formatValue(value) {
 }
 
 const containerStyle = {
-  background: '#0f172a',
+  background: '#fffaf3',
   borderRadius: '8px',
   padding: '12px',
   minHeight: '80px',
+  border: '1px solid #f5c48b',
 };

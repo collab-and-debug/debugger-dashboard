@@ -108,17 +108,18 @@ export default function SessionPage() {
           flexWrap: 'wrap',
         }}
       >
-        <h2 style={{ margin: 0, color: '#e2e8f0' }}>Collab Debugger</h2>
+        <h2 style={{ margin: 0, color: '#7c2d12', fontSize: '30px' }}>Collab Debugger</h2>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <span style={{ fontSize: '13px', color: '#6b7280' }}>Session:</span>
+          <span style={{ fontSize: '13px', color: '#7c5a3d' }}>Session:</span>
           <code
             style={{
-              background: '#1e293b',
-              color: '#e2e8f0',
+              background: '#fff8ef',
+              color: '#7c2d12',
               padding: '2px 8px',
-              borderRadius: '4px',
+              borderRadius: '6px',
               fontSize: '13px',
+              border: '1px solid #f5c48b',
             }}
           >
             {id}
@@ -139,11 +140,11 @@ export default function SessionPage() {
               background: userColor || '#888',
             }}
           />
-          <span style={{ fontSize: '13px', color: '#e2e8f0' }}>{userId}</span>
+          <span style={{ fontSize: '13px', color: '#3f2f1e' }}>{userId}</span>
         </div>
       </div>
 
-      {connectionStatus === 'connecting' && <p>Waiting for extension to connect...</p>}
+      {connectionStatus === 'connecting' && <p style={{ color: '#9a3412' }}>Waiting for extension to connect...</p>}
 
       <div
         style={{
@@ -153,9 +154,9 @@ export default function SessionPage() {
           marginBottom: '24px',
         }}
       >
-        <StatCard label="Breakpoints" count={breakpoints.length} color="#a78bfa" />
-        <StatCard label="Variable Scopes" count={Object.keys(variables).length} color="#34d399" />
-        <StatCard label="Presence Events" count={presenceEvents.length} color="#60a5fa" />
+        <StatCard label="Breakpoints" count={breakpoints.length} color="#ea580c" />
+        <StatCard label="Variable Scopes" count={Object.keys(variables).length} color="#16a34a" />
+        <StatCard label="Presence Events" count={presenceEvents.length} color="#f59e0b" />
       </div>
 
       <div className="session-layout" style={{ marginBottom: '24px' }}>
@@ -189,7 +190,7 @@ export default function SessionPage() {
       {process.env.NODE_ENV === 'development' && (
         <div
           style={{
-            borderTop: '1px solid #1e293b',
+            borderTop: '1px solid #f5c48b',
             paddingTop: '16px',
             marginTop: '8px',
           }}
@@ -288,7 +289,7 @@ export default function SessionPage() {
 
 const sectionHeading = {
   fontSize: '13px',
-  color: '#94a3b8',
+  color: '#8a6a43',
   marginBottom: '8px',
   letterSpacing: '0.05em',
   fontWeight: 500,
@@ -298,13 +299,14 @@ function StatCard({ label, count, color }) {
   return (
     <div
       style={{
-        background: '#1e293b',
-        borderRadius: '8px',
+        background: '#fffaf3',
+        borderRadius: '10px',
         padding: '12px 16px',
         borderLeft: `3px solid ${color}`,
+        border: '1px solid #f5c48b',
       }}
     >
-      <p style={{ fontSize: '12px', color: '#64748b', margin: '0 0 4px' }}>{label}</p>
+      <p style={{ fontSize: '12px', color: '#8a6a43', margin: '0 0 4px' }}>{label}</p>
       <p style={{ fontSize: '24px', fontWeight: 600, color, margin: 0 }}>{count}</p>
     </div>
   );

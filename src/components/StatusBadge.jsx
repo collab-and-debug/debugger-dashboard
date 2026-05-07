@@ -1,7 +1,7 @@
 const STYLES = {
-  connected: { background: '#064e3b', color: '#34d399' },
-  connecting: { background: '#1c1917', color: '#fbbf24' },
-  disconnected: { background: '#450a0a', color: '#f87171' },
+  connected: { background: '#dcfce7', color: '#166534' },
+  connecting: { background: '#ffedd5', color: '#c2410c' },
+  disconnected: { background: '#fee2e2', color: '#b91c1c' },
 };
 
 export function StatusBadge({ status }) {

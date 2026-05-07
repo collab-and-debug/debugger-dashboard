@@ -7,7 +7,7 @@ export function BreakpointsPanel({ breakpoints, presentUsers }) {
   return (
     <div style={containerStyle}>
       {breakpoints.length === 0 ? (
-        <p style={{ color: '#888' }}>No breakpoints set yet. Add one from your editor.</p>
+        <p style={{ color: '#8a6a43' }}>No breakpoints set yet. Add one from your editor.</p>
       ) : (
         breakpoints.map((bp, index) => (
           <div key={bp.id || `${bp.file}-${bp.line}-${index}`} style={rowStyle}>
@@ -22,10 +22,10 @@ export function BreakpointsPanel({ breakpoints, presentUsers }) {
               }}
             />
             <div style={{ flex: 1 }}>
-              <span style={{ color: '#e2e8f0', fontSize: '13px', fontFamily: 'monospace' }}>{bp.file}</span>
+              <span style={{ color: '#3f2f1e', fontSize: '13px', fontFamily: 'monospace' }}>{bp.file}</span>
               <span
                 style={{
-                  color: '#a78bfa',
+                  color: '#ea580c',
                   fontSize: '13px',
                   fontFamily: 'monospace',
                   marginLeft: '8px',
@@ -34,7 +34,7 @@ export function BreakpointsPanel({ breakpoints, presentUsers }) {
                 :{bp.line}
               </span>
             </div>
-            <span style={{ fontSize: '12px', color: '#6b7280' }}>{bp.userName}</span>
+            <span style={{ fontSize: '12px', color: '#8a6a43' }}>{bp.userName}</span>
           </div>
         ))
       )}
@@ -43,10 +43,11 @@ export function BreakpointsPanel({ breakpoints, presentUsers }) {
 }
 
 const containerStyle = {
-  background: '#0f172a',
+  background: '#fffaf3',
   borderRadius: '8px',
   padding: '12px',
   minHeight: '80px',
+  border: '1px solid #f5c48b',
 };
 
 const rowStyle = {
@@ -54,5 +55,5 @@ const rowStyle = {
   alignItems: 'flex-start',
   gap: '10px',
   padding: '6px 0',
-  borderBottom: '1px solid #1e293b',
+  borderBottom: '1px solid #f3dfc2',
 };

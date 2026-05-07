@@ -85,35 +85,33 @@ function HomePage() {
       <div className="home-layout" style={{ width: '100%', maxWidth: '920px', display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: '24px' }}>
         <div
           style={{
-            background: 'rgba(15, 23, 42, 0.9)',
-            border: '1px solid #1e293b',
-            borderRadius: '24px',
+            background: '#fff8ef',
+            border: '1px solid #f5c48b',
+            borderRadius: '14px',
             padding: '32px',
-            boxShadow: '0 30px 80px rgba(2, 6, 23, 0.45)',
           }}
         >
-          <p style={{ margin: '0 0 12px', color: '#60a5fa', letterSpacing: '0.08em', fontSize: '12px', textTransform: 'uppercase' }}>
-            Collaborative Debugging
+          <p style={{ margin: '0 0 10px', color: '#15803d', letterSpacing: '0.06em', fontSize: '12px', textTransform: 'uppercase' }}>
+            Shared Session Workspace
           </p>
-          <h1 style={{ margin: '0 0 12px', fontSize: '48px', lineHeight: 1.05 }}>Collab Debugger</h1>
-          <p style={{ margin: 0, color: '#94a3b8', fontSize: '16px', lineHeight: 1.6 }}>
-            Create a shared debugging room, invite teammates, and watch breakpoints, variables, and live activity update together.
+          <h1 style={{ margin: '0 0 14px', fontSize: '36px', lineHeight: 1.15, fontWeight: 700, color: '#7c2d12' }}>Collab Debugger</h1>
+          <p style={{ margin: 0, color: '#7c5a3d', fontSize: '15px', lineHeight: 1.6 }}>
+            Start a session, share the ID, and follow breakpoints, variables, and live debugger activity with your team.
           </p>
         </div>
 
         <div
           style={{
-            background: 'rgba(15, 23, 42, 0.96)',
-            border: '1px solid #1e293b',
-            borderRadius: '24px',
+            background: '#fffcf7',
+            border: '1px solid #f5c48b',
+            borderRadius: '14px',
             padding: '28px',
-            boxShadow: '0 24px 60px rgba(2, 6, 23, 0.35)',
           }}
         >
-          {error && <p style={{ color: '#fca5a5', marginTop: 0 }}>{error}</p>}
+          {error && <p style={{ color: '#b91c1c', marginTop: 0 }}>{error}</p>}
 
           <div style={{ marginBottom: '28px' }}>
-            <h2 style={{ margin: '0 0 16px', fontSize: '24px' }}>Create Session</h2>
+            <h2 style={{ margin: '0 0 16px', fontSize: '22px', fontWeight: 600 }}>Create Session</h2>
             <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
               <input
                 placeholder="Your name"
@@ -126,7 +124,7 @@ function HomePage() {
           </div>
 
           <div>
-            <h2 style={{ margin: '0 0 16px', fontSize: '24px' }}>Join Session</h2>
+            <h2 style={{ margin: '0 0 16px', fontSize: '22px', fontWeight: 600 }}>Join Session</h2>
             <div style={{ display: 'grid', gap: '10px' }}>
               <input
                 placeholder="Your name"
