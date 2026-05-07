@@ -1,44 +1,43 @@
-export function BreakpointsPanel({ breakpoints }) {
-  if (breakpoints.length === 0) {
-    return (
-      <div style={containerStyle}>
-        <p style={{ color: '#4b5563', fontSize: '13px' }}>No active breakpoints.</p>
-      </div>
-    );
-  }
+export function BreakpointsPanel({ breakpoints, presentUsers }) {
+  const getColor = (userName, fallbackColor) => {
+    const user = presentUsers.find((u) => u.userName === userName);
+    return user?.color || fallbackColor || '#888';
+  };
 
   return (
     <div style={containerStyle}>
-      {breakpoints.map((bp, i) => (
-        <div key={i} style={rowStyle}>
-
-          {/* Color dot — who set it */}
-          <div style={{
-            width: '8px',
-            height: '8px',
-            borderRadius: '50%',
-            background: bp.userColor || '#888',
-            flexShrink: 0,
-            marginTop: '3px',
-          }} />
-
-          {/* File + line */}
-          <div style={{ flex: 1 }}>
-            <span style={{ color: '#e2e8f0', fontSize: '13px', fontFamily: 'monospace' }}>
-              {bp.file}
-            </span>
-            <span style={{ color: '#a78bfa', fontSize: '13px', fontFamily: 'monospace', marginLeft: '8px' }}>
-              :{bp.line}
-            </span>
+      {breakpoints.length === 0 ? (
+        <p style={{ color: '#888' }}>No breakpoints set yet. Add one from your editor.</p>
+      ) : (
+        breakpoints.map((bp, index) => (
+          <div key={bp.id || `${bp.file}-${bp.line}-${index}`} style={rowStyle}>
+            <div
+              style={{
+                width: '8px',
+                height: '8px',
+                borderRadius: '50%',
+                background: getColor(bp.userName, bp.userColor),
+                flexShrink: 0,
+                marginTop: '3px',
+              }}
+            />
+            <div style={{ flex: 1 }}>
+              <span style={{ color: '#e2e8f0', fontSize: '13px', fontFamily: 'monospace' }}>{bp.file}</span>
+              <span
+                style={{
+                  color: '#a78bfa',
+                  fontSize: '13px',
+                  fontFamily: 'monospace',
+                  marginLeft: '8px',
+                }}
+              >
+                :{bp.line}
+              </span>
+            </div>
+            <span style={{ fontSize: '12px', color: '#6b7280' }}>{bp.userName}</span>
           </div>
-
-          {/* Set by */}
-          <span style={{ fontSize: '12px', color: '#6b7280' }}>
-            {bp.userName}
-          </span>
-
-        </div>
-      ))}
+        ))
+      )}
     </div>
   );
 }
