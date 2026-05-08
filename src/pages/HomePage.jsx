@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const API = 'http://localhost:3000';
+const API = import.meta.env.VITE_API_URL;
 
 // Random hex color for user
 const randomColor = () => '#' + Math.floor(Math.random() * 0xFFFFFF).toString(16).padStart(6, '0');
@@ -42,7 +42,7 @@ function HomePage() {
 
       navigate(`/session/${data.sessionId}`);
     } catch (err) {
-      setError('Cannot reach the session server on http://localhost:3000');
+      setError(`Cannot reach the session server on ${API}`);
     }
   };
 
@@ -68,7 +68,7 @@ function HomePage() {
 
       navigate(`/session/${joinSessionId}`);
     } catch (err) {
-      setError('Cannot reach the session server on http://localhost:3000');
+      setError(`Cannot reach the session server on ${API}`);
     }
   };
 

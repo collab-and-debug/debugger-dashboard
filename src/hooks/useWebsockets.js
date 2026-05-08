@@ -10,7 +10,10 @@ export default function useWebSocket(sessionId) {
   const reconnectTimer = useRef(null);
 
   const connect = useCallback(() => {
-    const ws = new WebSocket(`ws://localhost:5000?sessionId=${sessionId}`);
+    // ✅ FIX: use env variable instead of localhost
+    const WS_URL = import.meta.env.VITE_WS_URL;
+
+    const ws = new WebSocket(`${WS_URL}?sessionId=${sessionId}`);
     wsRef.current = ws;
 
     ws.onopen = () => {
