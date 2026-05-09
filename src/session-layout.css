@@ -1,0 +1,10 @@
+.session-layout {
+  display: flex;
+  gap: 16px;
+}
+
+@media (max-width: 768px) {
+  .session-layout {
+    flex-direction: column;
+  }
+}
