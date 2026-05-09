@@ -187,7 +187,7 @@ export default function SessionPage() {
         )}
       </div>
 
-      {process.env.NODE_ENV === 'development' && (
+      {import.meta.env.DEV && (
         <div
           style={{
             borderTop: '1px solid #f5c48b',

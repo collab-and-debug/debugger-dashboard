@@ -1,33 +1,28 @@
-// src/pages/HomePage.jsx
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const API = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000';
 
-// Random hex color for user
 const randomColor = () =>
-  '#' + Math.floor(Math.random() * 0xffffff).toString(16).padStart(6, '0');
+  `#${Math.floor(Math.random() * 0xffffff).toString(16).padStart(6, '0')}`;
 
 function HomePage() {
   const navigate = useNavigate();
-
-  // Create session state
   const [createName, setCreateName] = useState('');
-
-  // Join session state
   const [joinName, setJoinName] = useState('');
   const [joinSessionId, setJoinSessionId] = useState('');
-
   const [error, setError] = useState('');
 
-  // Warn if env is missing (helps debugging in production)
-  if (!import.meta.env.VITE_BACKEND_URL) {
-    console.warn('⚠️ VITE_BACKEND_URL is not set in environment variables');
+  if (import.meta.env.DEV && !import.meta.env.VITE_BACKEND_URL) {
+    console.warn('VITE_BACKEND_URL is not set in environment variables');
   }
 
-  // ── Create Session ──────────────────────────────────
   const handleCreate = async () => {
-    if (!createName.trim()) return setError('Enter your name');
+    if (!createName.trim()) {
+      setError('Enter your name');
+      return;
+    }
+
     setError('');
 
     try {
@@ -53,10 +48,10 @@ function HomePage() {
     }
   };
 
-  // ── Join Session ────────────────────────────────────
   const handleJoin = async () => {
     if (!joinName.trim() || !joinSessionId.trim()) {
-      return setError('Enter both name and session ID');
+      setError('Enter both name and session ID');
+      return;
     }
 
     setError('');
@@ -71,8 +66,14 @@ function HomePage() {
         }),
       });
 
-      if (res.status === 404) return setError('Session not found');
-      if (!res.ok) throw new Error('Join session failed');
+      if (res.status === 404) {
+        setError('Session not found');
+        return;
+      }
+
+      if (!res.ok) {
+        throw new Error('Join session failed');
+      }
 
       localStorage.setItem('userId', joinName);
       localStorage.setItem('userColor', randomColor());
@@ -104,7 +105,6 @@ function HomePage() {
           gap: '24px',
         }}
       >
-        {/* LEFT PANEL */}
         <div
           style={{
             background: '#fff8ef',
@@ -150,7 +150,6 @@ function HomePage() {
           </p>
         </div>
 
-        {/* RIGHT PANEL */}
         <div
           style={{
             background: '#fffcf7',
@@ -159,11 +158,8 @@ function HomePage() {
             padding: '28px',
           }}
         >
-          {error && (
-            <p style={{ color: '#b91c1c', marginTop: 0 }}>{error}</p>
-          )}
+          {error && <p style={{ color: '#b91c1c', marginTop: 0 }}>{error}</p>}
 
-          {/* CREATE SESSION */}
           <div style={{ marginBottom: '28px' }}>
             <h2 style={{ margin: '0 0 16px', fontSize: '22px' }}>
               Create Session
@@ -180,7 +176,6 @@ function HomePage() {
             </div>
           </div>
 
-          {/* JOIN SESSION */}
           <div>
             <h2 style={{ margin: '0 0 16px', fontSize: '22px' }}>
               Join Session
